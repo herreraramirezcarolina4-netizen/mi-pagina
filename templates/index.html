@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi App | Descárgala gratis</title>
+  <meta name="description" content="Descarga Mi App y empieza hoy.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ ga_id }}');
+  </script>
+</head>
+<body>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera-interior">
+      <a href="#inicio" class="logo">Mi App</a>
+      <nav>
+        <a href="#caracteristicas">Características</a>
+        <a href="{{ app_url }}" class="boton boton-chico"
+           data-evento="click_descarga_app" data-ubicacion="cabecera">Descargar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor">
+        <h1>Tu idea, <span>en la palma de tu mano</span></h1>
+        <p class="subtitulo">
+          Una app simple, rápida y gratuita para que hagas más en menos tiempo.
+        </p>
+        <div class="acciones">
+          <a href="{{ app_url }}" class="boton"
+             data-evento="click_descarga_app" data-ubicacion="hero">
+            Descargar app
+          </a>
+          <a href="#caracteristicas" class="boton boton-secundario"
+             data-evento="click_saber_mas" data-ubicacion="hero">
+            Saber más
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="caracteristicas">
+      <div class="contenedor">
+        <h2>¿Por qué usarla?</h2>
+        <div class="tarjetas">
+          <article class="tarjeta">
+            <div class="icono">⚡</div>
+            <h3>Rápida</h3>
+            <p>Se abre al instante y no se traba.</p>
+          </article>
+          <article class="tarjeta">
+            <div class="icono">🔒</div>
+            <h3>Segura</h3>
+            <p>Tus datos se quedan contigo.</p>
+          </article>
+          <article class="tarjeta">
+            <div class="icono">🎁</div>
+            <h3>Gratis</h3>
+            <p>Sin costos ocultos para empezar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="descargar">
+      <div class="contenedor">
+        <h2>Empieza hoy mismo</h2>
+        <p>Descárgala en menos de un minuto.</p>
+        <a href="{{ app_url }}" class="boton boton-blanco"
+           data-evento="click_descarga_app" data-ubicacion="cta_final">
+          Descargar app
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p>© 2026 Mi App. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
