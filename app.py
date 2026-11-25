@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 # CAMBIA ESTOS DOS VALORES
 APP_URL = "https://play.google.com/store/apps/details?id=TU_APP"
-GA_ID = "G-XXXXXXXXXX"
+GA_ID = "G-PH39V9K31V"
 
 @app.route("/")
 def inicio():
