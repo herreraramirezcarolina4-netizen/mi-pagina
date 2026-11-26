@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block titulo %}Así se verá TREKK | Mockups de la app{% endblock %}
+{% block descripcion %}Conoce las pantallas de TREKK, la app para administrar tu dinero. La app está en desarrollo.{% endblock %}
+
+{% block contenido %}
+
+<section class="app-hero contenedor">
+  <h1>Así se verá TREKK.</h1>
+  <p class="sub">La app está en desarrollo. Estas son las pantallas que estamos diseñando: tu margen diario, el escaneo de tickets, recordatorios, carteras, la Academia y el plan Plus.</p>
+</section>
+
+<section class="contenedor mockups">
+  <figure class="galeria">
+    <img src="{{ url_for('static', filename='mockups/mockups.webp') }}"
+         alt="Diez pantallas de la app TREKK: bienvenida, inicio con 'Hoy puedes gastar $185', escaneo de ticket, gasto registrado, recordatorios, carteras, gastos del mes, nivel y logros, Academia TREKK, explorar opciones de ahorro y el plan TREKK Plus"
+         width="1536" height="1024">
+  </figure>
+</section>
+
+<section class="contenedor">
+  <div class="cta-interactiva">
+    <div>
+      <h2>Pruébala tú mismo</h2>
+      <p>Entra a la versión interactiva y recorre la app como si ya la tuvieras en tu celular.</p>
+    </div>
+    <a class="btn btn-grande btn-amarillo" href="{{ interactive_url }}" target="_blank" rel="noopener" data-evento="clic_app_interactiva" data-ubicacion="pagina_app">Abrir versión interactiva</a>
+  </div>
+
+  <p class="volver"><a href="{{ url_for('inicio') }}#funciones">Ver todas las funciones</a></p>
+</section>
+
+{% endblock %}

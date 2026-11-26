@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TREKKO Plus | Tu vida bien administrada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--yellow:#ffc51b;--yellow2:#ffdb65;--ink:#171717;--muted:#77736b;--paper:#fffdf8;--soft:#fff5d8;--line:#eee9dc;--green:#21865b;--shadow:0 14px 38px rgba(35,29,12,.08)}
+*{box-sizing:border-box}body{margin:0;background:#f7f6f2;color:var(--ink);font-family:Montserrat,Arial,sans-serif}button,input{font:inherit}button{cursor:pointer;border:0}
+.app{min-height:100vh;display:grid;grid-template-columns:250px 1fr;max-width:1600px;margin:auto;background:#fbfaf7}
+.sidebar{background:#fff;padding:28px 18px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:26px}
+.brand{font-weight:900;letter-spacing:3px;font-size:26px;padding:5px 12px}.brand span{display:inline-grid;place-items:center;background:var(--yellow);width:25px;height:25px;border-radius:50%;font-size:18px;letter-spacing:0;margin-left:2px}
+.plus-tag{margin:0 12px;background:var(--ink);color:var(--yellow);border-radius:30px;padding:10px 14px;font-size:12px;font-weight:800;letter-spacing:1px;width:max-content}
+.profile{display:flex;align-items:center;gap:10px;padding:0 12px}.avatar{width:38px;height:38px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-weight:800}.profile strong{font-size:13px}.profile small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.nav-label{font-size:10px;color:#aaa;font-weight:800;letter-spacing:1.5px;padding:0 13px;margin-bottom:-15px}
+nav{display:grid;gap:6px}nav button{background:transparent;text-align:left;padding:13px 14px;border-radius:12px;color:#5f5c55;font-size:12px;font-weight:650;display:flex;gap:12px;align-items:center}nav button.active,nav button:hover{background:var(--soft);color:#171717}nav .ico{width:19px;text-align:center;font-size:16px}
+.sidebar-bottom{margin-top:auto;padding:16px 12px;border-radius:16px;background:#fff8e7;font-size:11px;line-height:1.6}.sidebar-bottom b{display:block;font-size:12px;margin-bottom:5px}
+main{padding:30px clamp(18px,4vw,54px) 50px;min-width:0}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.eyebrow{font-size:10px;color:var(--muted);letter-spacing:1.3px;font-weight:700}.top-actions{display:flex;gap:10px;align-items:center}.icon-btn{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:white}.date{font-size:11px;color:var(--muted);margin-right:8px}
+h1{font-size:clamp(24px,3vw,34px);letter-spacing:-1.2px;margin:8px 0 7px;font-weight:800}.sub{font-size:12px;color:var(--muted);margin:0}.welcome{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px}.premium-pill{background:var(--yellow);border-radius:30px;padding:10px 16px;font-size:11px;font-weight:800}
+.grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:16px}.card{background:white;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow);min-width:0}.spend{grid-column:span 2;background:linear-gradient(120deg,#ffcf37,#ffe69a);border:0;position:relative;overflow:hidden}.spend:after{content:"↗";position:absolute;right:25px;top:16px;font-size:90px;font-weight:900;color:rgba(255,255,255,.42)}.card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.card-head strong{font-size:13px}.muted{font-size:10px;color:var(--muted)}.spend .muted{color:#594a1e}.amount{font-size:clamp(34px,4vw,48px);font-weight:900;letter-spacing:-2px;margin:8px 0}.safe{font-size:11px;font-weight:700;color:#315b35}.mini-stats{display:flex;gap:10px;margin-top:18px}.mini-stat{background:rgba(255,255,255,.58);padding:10px 12px;border-radius:12px;min-width:100px}.mini-stat small{display:block;font-size:9px;color:#655b3d}.mini-stat b{font-size:15px}
+.goal-list{display:grid;gap:16px}.goal-row{display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:center}.goal-icon{width:36px;height:36px;border-radius:11px;background:var(--soft);display:grid;place-items:center}.goal-row b{font-size:11px}.goal-row small{display:block;color:var(--muted);font-size:9px;margin-top:4px}.goal-row strong{font-size:11px}.bar{height:7px;background:#f0eee8;border-radius:9px;margin-top:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--yellow);border-radius:9px}
+.chart-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(#ffc51b 0 36%,#f49d37 36% 59%,#242424 59% 76%,#f6df9b 76% 100%);display:grid;place-items:center;flex:none}.donut:after{content:"$2,450";width:76px;height:76px;border-radius:50%;background:white;display:grid;place-items:center;font-size:13px;font-weight:800}.legend{display:grid;gap:10px;font-size:10px;flex:1}.legend span{display:flex;justify-content:space-between;gap:12px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px}
+.wallets{display:grid;gap:9px}.wallet{display:flex;justify-content:space-between;align-items:center;background:#fffaf0;border:1px solid #f5eddb;border-radius:12px;padding:12px}.wallet b{font-size:11px}.wallet small{display:block;color:var(--muted);font-size:9px;margin-top:3px}.wallet strong{font-size:12px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.feature{background:white;border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;gap:12px;align-items:flex-start}.feature .ficon{width:36px;height:36px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:17px;flex:none}.feature b{font-size:11px;display:block;margin:2px 0 5px}.feature p{font-size:9px;color:var(--muted);line-height:1.5;margin:0}
+.section-title{font-size:15px;font-weight:800;margin:28px 0 12px}.actions{display:flex;gap:8px;flex-wrap:wrap}.action{background:var(--ink);color:white;border-radius:30px;padding:11px 15px;font-size:10px;font-weight:700}.action.yellow{background:var(--yellow);color:var(--ink)}.action.outline{background:white;color:var(--ink);border:1px solid var(--line)}
+.toast{position:fixed;bottom:22px;right:22px;background:#171717;color:white;padding:13px 18px;border-radius:12px;font-size:11px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}
+.modal-back{display:none;position:fixed;inset:0;background:#0006;align-items:center;justify-content:center;padding:20px;z-index:5}.modal-back.open{display:flex}.modal{background:white;border-radius:20px;padding:24px;width:min(420px,100%);box-shadow:0 20px 60px #0003}.modal h2{font-size:20px;margin:0 0 8px}.modal p{font-size:11px;color:var(--muted);line-height:1.6}.modal input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;margin:8px 0 14px;font-size:12px}.modal-actions{display:flex;justify-content:flex-end;gap:8px}
+@media(max-width:1050px){.app{grid-template-columns:210px 1fr}.grid{grid-template-columns:1fr 1fr}.spend{grid-column:span 2}.feature-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.app{display:block}.sidebar{padding:14px;position:sticky;top:0;z-index:3;border-right:0;border-bottom:1px solid var(--line);display:block}.brand{display:inline-block;font-size:22px}.plus-tag{display:inline-block;margin-left:8px;vertical-align:middle}.profile,.nav-label,.sidebar-bottom{display:none}nav{display:flex;overflow:auto;margin-top:12px;gap:4px}nav button{white-space:nowrap;padding:9px 11px;font-size:10px}.topbar{margin-bottom:20px}.date{display:none}main{padding:22px 15px 35px}.welcome{align-items:flex-start;gap:10px;flex-direction:column}.grid{grid-template-columns:1fr}.spend{grid-column:auto}.feature-grid{grid-template-columns:1fr}.card{padding:17px}.chart-wrap{justify-content:flex-start}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div><div class="brand">TREKK<span>↗</span></div><div class="plus-tag">✦ TREKKO PLUS</div></div>
+  <div class="profile"><div class="avatar">A</div><div><strong>Alin</strong><small>Plan Plus · Premium</small></div></div>
+  <div class="nav-label">MENÚ PRINCIPAL</div>
+  <nav>
+    <button class="active" data-view="inicio"><span class="ico">⌂</span>Inicio</button>
+    <button data-view="movimientos"><span class="ico">↕</span>Movimientos</button>
+    <button data-view="carteras"><span class="ico">▣</span>Mis carteras</button>
+    <button data-view="metas"><span class="ico">◎</span>Metas</button>
+    <button data-view="academia"><span class="ico">▤</span>Academia</button>
+    <button data-view="analitica"><span class="ico">▥</span>Analítica</button>
+  </nav>
+  <div class="sidebar-bottom"><b>✦ Tu Plus está activo</b>Disfruta carteras ilimitadas, sincronización bancaria y una experiencia sin anuncios.</div>
+</aside>
+<main>
+  <div class="topbar"><div class="eyebrow">TU ESPACIO FINANCIERO</div><div class="top-actions"><span class="date" id="today"></span><button class="icon-btn" id="notify" aria-label="Notificaciones">♧</button><button class="icon-btn" id="settings" aria-label="Configuración">⚙</button></div></div>
+  <div class="welcome"><div><h1>¡Hola, Alin! ✨</h1><p class="sub">Este es el resumen de tu vida financiera. Vas por buen camino.</p></div><div class="premium-pill">✦ EXPERIENCIA PLUS</div></div>
+  <section class="grid">
+    <div class="card spend">
+      <div class="card-head"><strong>Hoy puedes gastar</strong><span class="muted">Actualizado ahora</span></div>
+      <div class="amount" id="dailyAmount">$320.00</div><div class="safe">✓ Sin afectar tus pagos fijos ni tus metas</div>
+      <div class="mini-stats"><div class="mini-stat"><small>Disponible</small><b>$2,450</b></div><div class="mini-stat"><small>Ahorrado</small><b>$850</b></div><div class="mini-stat"><small>Gastos del mes</small><b>$1,120</b></div></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><strong>Mis metas</strong><button class="muted" id="allGoals">Ver todas ↗</button></div>
+      <div class="goal-list">
+        <div class="goal-row"><div class="goal-icon">✈</div><div><b>Viaje a Oaxaca</b><small>$4,500 de $14,000</small><div class="bar"><i style="width:32%"></i></div></div><strong>32%</strong></div>
+        <div class="goal-row"><div class="goal-icon">🎓</div><div><b>Curso de idiomas</b><small>$2,200 de $5,000</small><div class="bar"><i style="width:44%"></i></div></div><strong>44%</strong></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><strong>Distribución de gastos</strong><button class="muted" id="period">Este mes⌄</button></div>
+      <div class="chart-wrap"><div class="donut"></div><div class="legend"><span><label><i class="dot" style="background:#ffc51b"></i>Comida</label><b>36%</b></span><span><label><i class="dot" style="background:#f49d37"></i>Transporte</label><b>23%</b></span><span><label><i class="dot" style="background:#242424"></i>Compras</label><b>17%</b></span><span><label><i class="dot" style="background:#f6df9b"></i>Otros</label><b>24%</b></span></div></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><strong>Mis carteras</strong><button class="muted" id="newWallet">+ Agregar</button></div>
+      <div class="wallets"><div class="wallet"><div><b>💳 Gasto diario</b><small>Personal</small></div><strong>$2,450</strong></div><div class="wallet"><div><b>✈ Ahorro viaje</b><small>Personal</small></div><strong>$4,500</strong></div><div class="wallet"><div><b>👥 Plan con amigos</b><small>Compartida · 3 personas</small></div><strong>$1,250</strong></div></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><strong>Sincronización bancaria</strong><span class="muted">PLUS</span></div>
+      <div style="font-size:27px;margin:8px 0">↔</div><b style="font-size:12px">Tus cuentas conectadas</b><p class="muted" style="line-height:1.6">Tus movimientos se importan y clasifican automáticamente.</p><button class="action yellow" id="bank">Administrar conexiones</button>
+    </div>
+  </section>
+  <div class="section-title">Herramientas Plus para llevar tus finanzas más lejos</div>
+  <section class="feature-grid">
+    <div class="feature"><div class="ficon">▤</div><div><b>Academia completa</b><p>Accede a cursos, rutas avanzadas y contenido especializado.</p></div></div>
+    <div class="feature"><div class="ficon">▥</div><div><b>Analítica avanzada</b><p>Explora más gráficas, periodos y categorías de tus gastos.</p></div></div>
+    <div class="feature"><div class="ficon">♧</div><div><b>Recordatorios inteligentes</b><p>Anticípate a pagos, suscripciones y fechas importantes.</p></div></div>
+    <div class="feature"><div class="ficon">▧</div><div><b>Escaneo de tickets</b><p>Registra compras con reconocimiento automático de texto.</p></div></div>
+    <div class="feature"><div class="ficon">∞</div><div><b>Carteras ilimitadas</b><p>Crea apartados personales y compartidos para cada proyecto.</p></div></div>
+    <div class="feature"><div class="ficon">✦</div><div><b>Sin anuncios</b><p>Una experiencia limpia, enfocada en tus decisiones.</p></div></div>
+  </section>
+  <div class="section-title">Accesos rápidos</div>
+  <div class="actions"><button class="action yellow" id="scan">▧ Escanear ticket</button><button class="action" id="reminder">＋ Crear recordatorio</button><button class="action outline" id="compare">Comparar opciones</button></div>
+</main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<div class="modal-back" id="modalBack"><div class="modal"><h2 id="modalTitle">Nueva cartera</h2><p id="modalDesc">Organiza tu dinero con un nuevo apartado.</p><input id="modalInput" placeholder="Nombre de la cartera"><div class="modal-actions"><button class="action outline" id="cancel">Cancelar</button><button class="action yellow" id="save">Guardar</button></div></div></div>
+<script>
+const $=s=>document.querySelector(s);
+const toast=(msg)=>{const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)};
+$('#today').textContent=new Intl.DateTimeFormat('es-MX',{weekday:'long',day:'numeric',month:'long'}).format(new Date());
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');toast('Sección: '+b.textContent.trim());}));
+let modalMode='wallet';
+function openModal(title,desc,placeholder,mode){modalMode=mode;$('#modalTitle').textContent=title;$('#modalDesc').textContent=desc;$('#modalInput').placeholder=placeholder;$('#modalInput').value='';$('#modalBack').classList.add('open');$('#modalInput').focus()}
+$('#newWallet').onclick=()=>openModal('Crear cartera','Ponle un nombre al nuevo apartado.','Ej. Ahorro para viaje','wallet');
+$('#reminder').onclick=()=>openModal('Nuevo recordatorio','Agrega un pago o fecha que quieras tener presente.','Ej. Pago de internet','reminder');
+$('#cancel').onclick=()=>$('#modalBack').classList.remove('open');
+$('#save').onclick=()=>{const v=$('#modalInput').value.trim();if(!v){$('#modalInput').focus();return}$('#modalBack').classList.remove('open');toast(modalMode==='wallet'?'Cartera "'+v+'" creada en esta demo.':'Recordatorio "'+v+'" guardado en esta demo.')};
+$('#modalBack').addEventListener('click',e=>{if(e.target===$('#modalBack'))$('#modalBack').classList.remove('open')});
+$('#scan').onclick=()=>toast('Demo: aquí se abriría la cámara para escanear tu ticket.');
+$('#bank').onclick=()=>toast('Demo: aquí conectarías tus cuentas bancarias.');
+$('#compare').onclick=()=>toast('Abriendo el comparador de opciones financieras.');
+$('#notify').onclick=()=>toast('No tienes notificaciones pendientes. ¡Todo al día!');
+$('#settings').onclick=()=>toast('Configuración de tu cuenta TREKKO Plus.');
+$('#allGoals').onclick=()=>toast('Mostrando todas tus metas.');
+$('#period').onclick=()=>toast('Puedes cambiar entre vista semanal, mensual y anual en esta sección.');
+</script>
+</body>
+</html>

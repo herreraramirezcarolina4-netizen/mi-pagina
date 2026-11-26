@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block titulo %}TREKK | Tu vida bien administrada{% endblock %}</title>
+  <meta name="description" content="{% block descripcion %}Sabe cuánto puedes gastar hoy, registra tus gastos con una foto del ticket y ahorra para lo que sí quieres.{% endblock %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ ga_id }}');
+  </script>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="contenedor nav-interno">
+      <a href="{{ url_for('inicio') }}" class="logo" aria-label="TREKK, ir al inicio">
+        TREKK<span class="logo-flecha" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 16L16 8M9 8h7v7"/></svg></span>
+      </a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menú</button>
+      <nav class="nav-links" id="menu">
+        <a href="{{ url_for('inicio') }}#funciones">Funciones</a>
+        <a href="{{ url_for('inicio') }}#socios">Socios</a>
+        <a href="{{ url_for('inicio') }}#blog">Blog</a>
+        <a class="btn btn-chico" href="{{ url_for('mockups') }}" data-evento="clic_descargar_app" data-ubicacion="nav">Descargar app</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block contenido %}{% endblock %}
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie-interno">
+      <div>
+        <a href="{{ url_for('inicio') }}" class="logo logo-claro">
+          TREKK<span class="logo-flecha" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 16L16 8M9 8h7v7"/></svg></span>
+        </a>
+        <p class="pie-lema">Tu vida bien administrada.</p>
+      </div>
+      <nav class="pie-links">
+        <a href="{{ url_for('inicio') }}#funciones">Funciones</a>
+        <a href="{{ url_for('inicio') }}#socios">Socios</a>
+        <a href="{{ url_for('inicio') }}#blog">Blog</a>
+      </nav>
+      <a class="btn" href="{{ url_for('mockups') }}" data-evento="clic_descargar_app" data-ubicacion="pie">Descargar app</a>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
